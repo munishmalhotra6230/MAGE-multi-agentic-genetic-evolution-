@@ -1,0 +1,42 @@
+{
+  "version": "MAGE version-v1.0 (research-ready, mode=C)",
+  "seed": 42,
+  "num_agents": 6,
+  "search_mode": "multi",
+  "search_space": {
+    "layers": [
+      [
+        64,
+        64
+      ],
+      [
+        128,
+        64
+      ],
+      [
+        256,
+        128,
+        64
+      ],
+      [
+        512,
+        256,
+        128
+      ]
+    ],
+    "activations": [
+      "relu",
+      "gelu",
+      "tanh"
+    ]
+  },
+  "mutation_probs": {
+    "add_layer": 0.05,
+    "remove_layer": 0.02,
+    "add_neuron": 0.15,
+    "remove_neuron": 0.1,
+    "mutate_act": 0.1,
+    "hp_mutate": 0.25,
+    "weight_mutate": 0.4
+  }
+}
