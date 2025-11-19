@@ -1,5 +1,5 @@
 BEST MODEL SUMMARY
-Layers: [6, 64, 32, 1]
+Layers: [30, 64, 64, 1]
 Acts: ['relu', 'relu']
-Params: 2561
-Fitness: 0.6900691109451944
+Params: 6209
+Fitness: 0.7485232465385435

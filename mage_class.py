@@ -755,7 +755,7 @@ class MAGE:
         return self
 
     # ---------- predict / evaluate ----------
-    def predict(self, X):
+    def predict(self, X,threshold=0.5):
         if self.best_overall is None:
             raise RuntimeError("Model not trained / best_overall not set.")
         X = X.astype(np.float32)
@@ -765,7 +765,7 @@ class MAGE:
         acts = [_ACT_FNS[a][0] for a in acts_list] if len(acts_list) > 0 else [relu] * (len(W)-1)
         _, _, z = self._forward(X, W, B, acts)
         if self.task == "binary":
-            return (sigmoid(z) > 0.5).astype(int).ravel()
+            return (sigmoid(z) > threshold).astype(int).ravel()
         elif self.task == "multiclass":
             return np.argmax(softmax(z), axis=1)
         else:
@@ -800,7 +800,7 @@ class MAGE:
         except Exception:
             pass
 
-    def save_model(self, fname="mage_model.pkl"):
+    def save_model(self,fname="mage_model.pkl"):
         with open(fname, "wb") as f:
             pickle.dump(self.best_overall, f)
 
